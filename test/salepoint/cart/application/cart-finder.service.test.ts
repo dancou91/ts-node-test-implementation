@@ -1,26 +1,24 @@
 import { Cart } from "../../../../src/salepoint/cart/domain/cart.entity";
-import { CartRepository } from "../../../../src/salepoint/cart/domain/cart.repository";
 import { CartFinder } from "../../../../src/salepoint/cart/application/cart-finder.service";
 import { CartNotFoundException } from "../../../../src/salepoint/cart/application/cart-not-found.exception";
+import { CartMockRepository } from "../../../mocks/cart/cart.mock-repository";
 
-class CartMockRepository implements CartRepository {
-
-    private mockDb: Cart[];
-
-    constructor() {
-        this.mockDb = [];
-        this.mockDb.push(new Cart("sfasfdsadsadd-asdasd-sadasd"));
-    }
-
-    search(cartId: string): Cart | null {
-        const carts = this.mockDb.filter(cart => cart.cartId === cartId);
-        return carts[0] ? carts[0] : null;
-    }
-
-    save(cart: Cart): void {
-        throw new Error("Method not implemented.");
-    }
-}
+/**
+ * CartMockRepository
+ */
+jest.mock('../../../mocks/cart/cart.mock-repository', () => {
+    return {
+        CartMockRepository: jest.fn().mockImplementation(() => {
+            return {
+                search: (cartId: string) => {
+                    const mockCartId = "sfasfdsadsadd-asdasd-sadasd";
+                    return (cartId === mockCartId) ? new Cart(mockCartId) : null;
+                },
+                save: (cart: Cart) => { },
+            };
+        })
+    };
+});
 
 describe("CartFinder tests", () => {
 

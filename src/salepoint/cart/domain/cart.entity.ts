@@ -1,3 +1,5 @@
+import { CartItem } from "./cart-item";
+
 export class Cart {
 
     private _cartId: string;
@@ -18,33 +20,20 @@ export class Cart {
         return this._totalAmount;
     }
 
-    public addCartItem(productCode: string, quantity: string, price: number) {
-        this._items = [...this._items, new CartItem(productCode, quantity, price)];
-        this._totalAmount = this._items.reduce((total, cartItem) => total + cartItem.price, 0);
-    }
-}
+    public addCartItem(productCode: string, price: number): void {
 
-class CartItem {
+        const cartItem = this._items.find(cartItem => cartItem.productCode === productCode);
 
-    private _productCode;
-    private _quantity;
-    private _price;
+        if (cartItem) {
+            cartItem.increaseQuantity()
+        } else {
+            this._items.push(new CartItem(productCode, price));
+        }
 
-    constructor(productCode: string, quantity: string, price: number) {
-        this._productCode = productCode;
-        this._quantity = quantity;
-        this._price = price;
+        this._calculateTotalAmount();
     }
 
-    public get productCode() {
-        return this._productCode;
-    }
-
-    public get quantity() {
-        return this._quantity;
-    }
-
-    public get price() {
-        return this._price;
+    private _calculateTotalAmount(): void {
+        this._totalAmount = this._items.reduce((total, cartItem) => total + (cartItem.price * cartItem.quantity), 0);
     }
 }
