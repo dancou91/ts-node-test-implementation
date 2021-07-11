@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "ts": "ts-node app/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -13,7 +13,8 @@
   },
   "keywords": [
     "typescript",
-    "node"
+    "node",
+    "jest"
   ],
   "author": "Daniel Herrera Afonso",
   "license": "MIT",
@@ -22,7 +23,10 @@
   },
   "homepage": "https://github.com/dancou91/ts-node-test-implementation#readme",
   "devDependencies": {
+    "@types/jest": "^26.0.24",
     "@types/node": "^16.3.1",
+    "jest": "^27.0.6",
+    "ts-jest": "^27.0.3",
     "ts-node": "^10.1.0",
     "typescript": "^4.3.5"
   }

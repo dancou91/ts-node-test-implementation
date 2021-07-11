@@ -3,7 +3,7 @@ import { ProductRepository } from "../domain/product.repository";
 
 export class ProductMemoryRepository implements ProductRepository {
     
-    search(cide: string): Product | null {
+    search(code: string): Product | null {
         throw new Error("Method not implemented.");
     }
     
