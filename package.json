@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "ts": "ts-node app/index.ts",
-    "test": "jest"
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",

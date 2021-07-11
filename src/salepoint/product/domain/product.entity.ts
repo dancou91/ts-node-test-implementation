@@ -10,11 +10,15 @@ export class Product {
         this._price = price;
     }
 
-    public static create(
-        code: string,
-        name: string
-    ): Product {
-        let category = new this(code, name, 0);
-        return category;
+    public get code() {
+        return this._code;
+    }
+
+    public get name() {
+        return this._name;
+    }
+
+    public get price() {
+        return this._price;
     }
 }
