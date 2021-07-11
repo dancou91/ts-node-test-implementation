@@ -1,6 +1,7 @@
+import { CartItem } from "./cart-item";
+
 export interface Discount {
 
-    productCode: string;
-    apply(): void;
+    getDiscount(cartItems: CartItem[]): number;
 
 }

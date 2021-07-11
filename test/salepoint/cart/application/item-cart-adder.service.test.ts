@@ -1,7 +1,9 @@
 import { Cart } from "../../../../src/salepoint/cart/domain/cart.entity";
+import { TwoForOneDiscount } from "../../../../src/salepoint/cart/domain/two-for-one-discount";
 import { ItemCartAdder } from "../../../../src/salepoint/cart/application/item-cart-adder.service";
 import { CartMockRepository } from "../../../mocks/cart/cart.mock-repository";
 import { ProductMockRepository } from "../../../mocks/product/product.mock-repository";
+import { Discount } from "../../../../src/salepoint/cart/domain/discount";
 
 /**
  * CartMockRepository
@@ -49,14 +51,16 @@ describe("ItemCartAdder tests", () => {
 
     //     jest.spyOn(cartRepository, 'save');
 
-    //     const expectedCart: Cart = new Cart("sfasfdsadsadd-asdasd-sadasd");
+    //     let discounts = new Set<Discount>();
+    //     discounts.add(new TwoForOneDiscount("product-1"));
+
+    //     const expectedCart: Cart = new Cart("sfasfdsadsadd-asdasd-sadasd", discounts);
     //     expectedCart.addCartItem("product-1", 1.56);
-    //     expectedCart.addCartItem("product-2", 2.10);
 
     //     itemCartAdder.execute("sfasfdsadsadd-asdasd-sadasd", "product-1");
-    //     itemCartAdder.execute("sfasfdsadsadd-asdasd-sadasd", "product-2");
+    //     itemCartAdder.execute("sfasfdsadsadd-asdasd-sadasd", "product-1");
 
-    //     expect(expectedCart.totalAmount).toStrictEqual(3.66);
+    //     expect(expectedCart.totalAmount).toStrictEqual(1.56);
     //     expect(cartRepository.save).toHaveBeenCalledWith(expectedCart);
     // });
 })

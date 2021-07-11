@@ -1,13 +1,16 @@
 import { CartItem } from "./cart-item";
+import { Discount } from "./discount";
 
 export class Cart {
 
     private _cartId: string;
+    private _discounts: Discount[];
     private _items: CartItem[];
     private _totalAmount: number;
 
-    constructor(cartId: string, items = [], totalAmount = 0) {
+    constructor(cartId: string, discounts: Discount[] = [], items: CartItem[] = [], totalAmount = 0) {
         this._cartId = cartId;
+        this._discounts = discounts;
         this._items = items;
         this._totalAmount = totalAmount;
     }
@@ -35,5 +38,12 @@ export class Cart {
 
     private _calculateTotalAmount(): void {
         this._totalAmount = this._items.reduce((total, cartItem) => total + (cartItem.price * cartItem.quantity), 0);
+        this._applyDiscounts();
+    }
+
+    private _applyDiscounts() {
+        for (let discount of this._discounts) {
+            this._totalAmount - discount.getDiscount(this._items);
+        }
     }
 }

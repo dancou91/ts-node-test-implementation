@@ -24,7 +24,7 @@ describe("CartFinder tests", () => {
 
     test('should return cart when exist cart with specified id', () => {
         let cartFinder = new CartFinder(new CartMockRepository());
-        const expectedCart = new Cart("sfasfdsadsadd-asdasd-sadasd", [], 0);
+        const expectedCart = new Cart("sfasfdsadsadd-asdasd-sadasd");
         expect(cartFinder.execute("sfasfdsadsadd-asdasd-sadasd")).toStrictEqual(expectedCart)
     })
 
