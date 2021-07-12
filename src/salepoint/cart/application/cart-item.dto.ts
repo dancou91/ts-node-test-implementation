@@ -17,4 +17,8 @@ export class CartItemDTO {
     getQuantity() {
         return this.quantity;
     }
+
+    setQuantity(quantity: number) {
+        this.quantity = quantity;
+    }
 }
