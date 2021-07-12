@@ -2,6 +2,7 @@ import { Cart } from "../../../../src/salepoint/cart/domain/cart.entity";
 import { CartFinder } from "../../../../src/salepoint/cart/application/cart-finder.service";
 import { CartNotFoundException } from "../../../../src/salepoint/cart/application/cart-not-found.exception";
 import { CartMockRepository } from "../../../mocks/cart/cart.mock-repository";
+import { CartDTO } from "../../../../src/salepoint/cart/application/cart.dto";
 
 /**
  * CartMockRepository
@@ -24,7 +25,7 @@ describe("CartFinder tests", () => {
 
     test('should return cart when exist cart with specified id', () => {
         let cartFinder = new CartFinder(new CartMockRepository());
-        const expectedCart = new Cart("sfasfdsadsadd-asdasd-sadasd");
+        const expectedCart = new CartDTO("sfasfdsadsadd-asdasd-sadasd");
         expect(cartFinder.execute("sfasfdsadsadd-asdasd-sadasd")).toStrictEqual(expectedCart)
     })
 

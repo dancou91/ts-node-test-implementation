@@ -1,0 +1,10 @@
+[
+    {
+        "type": "TWO_FOR_ONE",
+        "productCode": "VOUCHER"
+    },
+    {
+        "type": "BULK_OFFER",
+        "productCode": "VOUCHER"
+    }
+]

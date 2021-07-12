@@ -1,10 +1,21 @@
-import { Product } from "../../product/domain/product.entity";
-import { ProductRepository } from "../../product/domain/product.repository";
+import { Cart } from "../domain/cart.entity";
+import { CartRepository } from "../domain/cart.repository";
 
-export class CartMemoryRepository implements ProductRepository {
+export class CartMemoryRepository implements CartRepository {
 
-    search(code: string): Product | null {
-        throw new Error("Method not implemented.");
+    private cart: Cart;
+
+    constructor() {
+        this.cart = new Cart("asdasd-sdasd-sads");
     }
+
+    search(cartId: string): Cart | null {
+        return this.cart;
+    }
+
+    save(cart: Cart): void {
+        this.cart = cart;
+    }
+
 
 }
