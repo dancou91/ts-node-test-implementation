@@ -4,7 +4,7 @@
   "description": "Project to evaluate technical knowledge",
   "main": "index.js",
   "scripts": {
-    "ts": "ts-node app/index.ts",
+    "start": "ts-node app/index.ts",
     "test": "jest",
     "test:coverage": "jest --coverage"
   },
