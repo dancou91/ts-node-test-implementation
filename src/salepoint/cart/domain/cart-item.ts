@@ -4,10 +4,10 @@ export class CartItem {
     private _price;
     private _quantity;
 
-    constructor(productCode: string, price: number) {
+    constructor(productCode: string, price: number, quantity: number = 1) {
         this._productCode = productCode;
         this._price = price;
-        this._quantity = 1;
+        this._quantity = quantity;
     }
 
     public get productCode() {

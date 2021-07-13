@@ -1,4 +1,4 @@
-import { ProductRepository } from "../../product/domain/product.repository";
+import { ProductFinder } from "../../product/application/product-finder.service";
 import { Cart } from "../domain/cart.entity";
 import { CartRepository } from "../domain/cart.repository";
 
@@ -6,15 +6,12 @@ export class ItemCartAdder {
 
     constructor(
         private cartRepository: CartRepository,
-        private productRepository: ProductRepository
+        private productFinder: ProductFinder
     ) { }
 
     execute(cartId: string, productCode: string): Cart {
 
-        const product = this.productRepository.search(productCode);
-        if (product === null) {
-            throw new Error();
-        }
+        const product = this.productFinder.execute(productCode);
 
         // Search cart if not exists then create it
         let cart = this.cartRepository.search(cartId);

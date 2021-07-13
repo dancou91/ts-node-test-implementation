@@ -62,14 +62,9 @@ class CheckoutImpl implements Checkout {
     }
 
     total(cartId: string): number {
-
         const cart: CartDTO = this.cartFinder.execute(cartId);
 
         if (!cart) return 0;
-
-        console.log("\n==========================================\n");
-        console.log(cart);
-        console.log("\n==========================================\n");
 
         return this._getTotalAmount(cart);
     }
