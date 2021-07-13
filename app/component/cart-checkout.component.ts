@@ -1,6 +1,7 @@
 import { CartFinder } from "../../src/salepoint/cart/application/cart-finder.service";
 import { CartDTO } from "../../src/salepoint/cart/application/cart.dto";
 import { ItemCartAdder } from "../../src/salepoint/cart/application/item-cart-adder.service";
+import { DiscountFinder } from "../../src/salepoint/discount/application/discount-finder.service";
 
 // Load component (singleton pattern)
 import cartFinder from "./cart-finder.component";
@@ -16,6 +17,7 @@ class CheckoutImpl implements Checkout {
 
     constructor(
         private cartFinder: CartFinder,
+        private discountFinder: DiscountFinder,
         private itemCartAdder: ItemCartAdder
     ) { }
 
@@ -25,10 +27,10 @@ class CheckoutImpl implements Checkout {
 
     total(cartId: string): number {
         const cart: CartDTO = this.cartFinder.execute(cartId);
-        const totalDiscount = discountFinder.execute(cartId);
+        const totalDiscount = this.discountFinder.execute(cartId);
         return cart.getTotalAmount() - totalDiscount;
     }
 }
 
-const checkout = new CheckoutImpl(cartFinder, itemCartAdder);
+const checkout = new CheckoutImpl(cartFinder, discountFinder, itemCartAdder);
 export default checkout;
